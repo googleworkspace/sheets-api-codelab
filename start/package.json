@@ -1,0 +1,25 @@
+{
+  "name": "sheets-api-codelab",
+  "description": "In this codelab, you'll learn how to integrate the Google Sheets API into an application to provide custom reporting.",
+  "version": "1.0.0",
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Eric Koleda",
+    "email": "ekoleda+devrel@googlers.com"
+  },
+  "repository": "https://github.com/googlecodelabs/sheets-api",
+  "scripts": {
+    "start": "./node_modules/nodemon/bin/nodemon.js server.js"
+  },
+  "dependencies": {
+    "body-parser": "~1.13.2",
+    "express": "^4.13.4",
+    "express-handlebars": "^3.0.0",
+    "morgan": "^1.7.0",
+    "sequelize": "^3.21.0",
+    "sqlite3": "^3.1.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.9.1"
+  }
+}

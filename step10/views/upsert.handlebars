@@ -1,0 +1,68 @@
+<!--
+  Copyright 2016 Google, Inc.
+
+  Licensed to the Apache Software Foundation (ASF) under one or more contributor
+  license agreements. See the NOTICE file distributed with this work for
+  additional information regarding copyright ownership. The ASF licenses this
+  file to you under the Apache License, Version 2.0 (the "License"); you may not
+  use this file except in compliance with the License. You may obtain a copy of
+  the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+  License for the specific language governing permissions and limitations under
+  the License.
+-->
+
+<section class="mdl-grid">
+  <div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">Order details</h2>
+    </div>
+    <form method="post" action="/upsert">
+      {{#if order}}
+      <input type="hidden" name="id" value="{{order.id}}" />
+      {{/if}}
+      <div class="mdl-card__supporting-text">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label block">
+          <input class="mdl-textfield__input" type="text" name="customerName" value="{{order.customerName}}">
+          <label class="mdl-textfield__label" for="sample1">Customer name...</label>
+        </div>
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label block">
+          <input class="mdl-textfield__input" type="text" name="productCode" id="productCode" value="{{order.productCode}}">
+          <label class="mdl-textfield__label" for="sample1">Product code...</label>
+        </div>
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label block">
+          <input class="mdl-textfield__input" type="text" pattern="[0-9]*" name="unitsOrdered" value="{{order.unitsOrdered}}">
+          <label class="mdl-textfield__label" for="sample1">Units ordered...</label>
+          <span class="mdl-textfield__error">Must be a positive integer</span>
+        </div>
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label block">
+          <input class="mdl-textfield__input" type="text" pattern="[0-9]*(\.[0-9]+)?" name="unitPrice" value="{{order.unitPrice}}">
+          <label class="mdl-textfield__label" for="sample1">Units price (USD)...</label>
+          <span class="mdl-textfield__error">Must be a positive number</span>
+        </div>
+
+        {{#if order}}
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label block">
+          <input class="mdl-textfield__input" type="text" pattern="PENDING|SHIPPED|DELIVERED" name="status" value="{{order.status}}">
+          <label class="mdl-textfield__label" for="sample1">Status...</label>
+          <span class="mdl-textfield__error">Must be one of PENDING, SHIPPED, or DELIVERED</span>
+        </div>
+        {{/if}}
+      </div>
+      <div class="mdl-card__actions">
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored mdl-button--raised">
+          {{#if order}}Save{{else}}Create{{/if}}
+        </button>
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect" href="/">Cancel</a>
+      </div>
+    </form>
+  </div>
+</section>
