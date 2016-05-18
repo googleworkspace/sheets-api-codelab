@@ -55,7 +55,7 @@ function onSignIn(user) {
   $('#profile .email').text(profile.getEmail());
 }
 
-// TODO: Add spreadsheet control handlers.
+// Spreadsheet control handlers.
 
 $(function() {
   $('button[rel="create"]').click(function() {

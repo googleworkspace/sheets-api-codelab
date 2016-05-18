@@ -109,7 +109,6 @@ router.post('/spreadsheets', function(req, res, next) {
 
 // Route for syncing spreadsheet.
 
-
 router.post('/spreadsheets/:id/sync', function(req, res, next) {
   var auth = req.get('Authorization');
   if (!auth) {
