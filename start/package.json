@@ -9,7 +9,7 @@
   },
   "repository": "https://github.com/googlecodelabs/sheets-api",
   "scripts": {
-    "start": "./node_modules/nodemon/bin/nodemon.js server.js"
+    "start": "nodemon server.js"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
