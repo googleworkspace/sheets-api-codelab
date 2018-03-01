@@ -17,8 +17,8 @@
   the License.
 */
 
-var google = require('googleapis');
-var googleAuth = require('google-auth-library');
+var {google} = require('googleapis');
+var {OAuth2Client} = require('google-auth-library');
 var util = require('util');
 
 /**
@@ -27,8 +27,7 @@ var util = require('util');
  * @constructor
  */
 var SheetsHelper = function(accessToken) {
-  var authClient = new googleAuth();
-  var auth = new authClient.OAuth2();
+  var auth = new OAuth2Client();
   auth.credentials = {
     access_token: accessToken
   };
@@ -63,10 +62,11 @@ SheetsHelper.prototype.createSpreadsheet = function(title, callback) {
       ]
     }
   };
-  self.service.spreadsheets.create(request, function(err, spreadsheet) {
+  self.service.spreadsheets.create(request, function(err, response) {
     if (err) {
       return callback(err);
     }
+    var spreadsheet = response.data;
     // TODO: Add header rows.
     return callback(null, spreadsheet);
   });
