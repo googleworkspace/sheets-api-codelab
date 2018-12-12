@@ -12,6 +12,7 @@
     "start": "nodemon server.js"
   },
   "dependencies": {
+    "4": "0.0.0",
     "body-parser": "~1.13.2",
     "express": "^4.13.4",
     "express-handlebars": "^3.0.0",
@@ -21,5 +22,8 @@
   },
   "devDependencies": {
     "nodemon": "^1.9.1"
+  },
+  "engines": {
+    "node": ">=4.5.0 <10"
   }
 }
