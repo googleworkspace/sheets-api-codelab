@@ -46,7 +46,7 @@ router.get('/create', function(req, res, next) {
 });
 
 router.get('/edit/:id', function(req, res, next) {
-  models.Order.findById(req.params.id).then(function(order) {
+  models.Order.findByPk(req.params.id).then(function(order) {
     if (order) {
       res.render('upsert', {
         order: order
@@ -58,7 +58,7 @@ router.get('/edit/:id', function(req, res, next) {
 });
 
 router.get('/delete/:id', function(req, res, next) {
-  models.Order.findById(req.params.id)
+  models.Order.findByPk(req.params.id)
     .then(function(order) {
       if (!order) {
         throw new Error('Order not found: ' + req.params.id);
@@ -117,7 +117,7 @@ router.post('/spreadsheets/:id/sync', function(req, res, next) {
   var accessToken = auth.split(' ')[1];
   var helper = new SheetsHelper(accessToken);
   Sequelize.Promise.all([
-    models.Spreadsheet.findById(req.params.id),
+    models.Spreadsheet.findByPk(req.params.id),
     models.Order.findAll()
   ]).then(function(results) {
     var spreadsheet = results[0];

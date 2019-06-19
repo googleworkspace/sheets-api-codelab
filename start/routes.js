@@ -44,7 +44,7 @@ router.get('/create', function(req, res, next) {
 });
 
 router.get('/edit/:id', function(req, res, next) {
-  models.Order.findById(req.params.id).then(function(order) {
+  models.Order.findByPk(req.params.id).then(function(order) {
     if (order) {
       res.render('upsert', {
         order: order
@@ -56,7 +56,7 @@ router.get('/edit/:id', function(req, res, next) {
 });
 
 router.get('/delete/:id', function(req, res, next) {
-  models.Order.findById(req.params.id)
+  models.Order.findByPk(req.params.id)
     .then(function(order) {
       if (!order) {
         throw new Error('Order not found: ' + req.params.id);
