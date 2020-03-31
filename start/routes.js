@@ -27,7 +27,8 @@ var Sequelize = require('sequelize');
 // TODO: Show spreadsheets on the main page.
 router.get('/', function(req, res, next) {
   var options = {
-    order: [['createdAt', 'DESC']]
+    order: [['createdAt', 'DESC']],
+    raw: true
   };
   models.Order.findAll(options)
   .then(function(orders) {
@@ -47,7 +48,7 @@ router.get('/edit/:id', function(req, res, next) {
   models.Order.findByPk(req.params.id).then(function(order) {
     if (order) {
       res.render('upsert', {
-        order: order
+        order: order.toJSON()
       });
     } else {
       next(new Error('Order not found: ' + req.params.id));

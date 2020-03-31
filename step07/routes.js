@@ -26,7 +26,8 @@ var Sequelize = require('sequelize');
 
 router.get('/', function(req, res, next) {
   var options = {
-    order: [['createdAt', 'DESC']]
+    order: [['createdAt', 'DESC']],
+    raw: true
   };
   Sequelize.Promise.all([
     models.Order.findAll(options),
@@ -49,7 +50,7 @@ router.get('/edit/:id', function(req, res, next) {
   models.Order.findByPk(req.params.id).then(function(order) {
     if (order) {
       res.render('upsert', {
-        order: order
+        order: order.toJSON()
       });
     } else {
       next(new Error('Order not found: ' + req.params.id));
