@@ -16,7 +16,7 @@
     "express": "^4.13.4",
     "express-handlebars": "^3.0.0",
     "morgan": "^1.7.0",
-    "sequelize": "^5.21.2",
+    "sequelize": "^6.29.0",
     "sqlite3": "^4.1.1"
   },
   "devDependencies": {
